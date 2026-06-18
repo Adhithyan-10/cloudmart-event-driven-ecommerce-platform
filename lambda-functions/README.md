@@ -1,4 +1,4 @@
-# ⚡ AWS Lambda Functions
+#  AWS Lambda Functions
 
 This folder contains all AWS Lambda functions used in the **Smart Event-Driven Order Processing System**.
 
