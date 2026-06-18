@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudMart Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>☁️ CloudMart Store</h1>
+    <p class="subtitle">AWS Event-Driven E-Commerce Platform</p>
+
+    <div class="products">
+
+        <div class="card">
+            <h3>💻 Laptop</h3>
+            <p>High Performance Device</p>
+        </div>
+
+        <div class="card">
+            <h3>⌨️ Keyboard</h3>
+            <p>Mechanical Keyboard</p>
+        </div>
+
+        <div class="card">
+            <h3>🖱️ Mouse</h3>
+            <p>Wireless Mouse</p>
+        </div>
+
+    </div>
+
+    <div class="order-form">
+
+        <h2>Place Order</h2>
+
+        <input type="text" id="customer" placeholder="Customer Name">
+
+        <input type="email" id="email" placeholder="Email Address">
+
+        <select id="product">
+            <option value="Laptop">Laptop</option>
+            <option value="Keyboard">Keyboard</option>
+            <option value="Mouse">Mouse</option>
+        </select>
+
+        <input type="number" id="quantity" placeholder="Quantity">
+
+        <button onclick="placeOrder()">Place Order</button>
+
+        <div id="result"></div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
