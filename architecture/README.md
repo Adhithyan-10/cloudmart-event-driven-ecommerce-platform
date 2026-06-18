@@ -182,7 +182,7 @@ Dead Letter Queues (DLQ) capture failed messages for troubleshooting and recover
 
 # Future Production Architecture
 
-![Future Architecture](architecture/futureenc.png)
+![Future Architecture](./futureenc.png)
 
 ## Overview
 
