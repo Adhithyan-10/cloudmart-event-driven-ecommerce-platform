@@ -11,7 +11,7 @@ This repository contains two architecture designs:
 
 # Current Implementation Architecture
 
-![Current Architecture](architecture/beforefuture.png)
+![Current Architecture](./beforefuture.png)
 
 ## Overview
 
