@@ -1,4 +1,4 @@
-#  AWS Lambda Functions
+# ⚡ AWS Lambda Functions
 
 This folder contains all AWS Lambda functions used in the **Smart Event-Driven Order Processing System**.
 
@@ -11,17 +11,11 @@ These functions form the core business logic of the application and work togethe
 ```text
 lambda-functions/
 │
-├── order-handler/
-│   └── lambda_function.py
-│
-├── inventory-handler/
-│   └── lambda_function.py
-│
-├── payment-handler/
-│   └── lambda_function.py
-│
-└── notification-handler/
-    └── lambda_function.py
+├── README.md
+├── order-handler.py
+├── inventory-handler.py
+├── payment-handler.py
+└── notification-handler.py
 ```
 
 ---
@@ -30,10 +24,10 @@ lambda-functions/
 
 | Function | Purpose |
 |-----------|-----------|
-| [Order Handler](./order-handler/lambda_function.py) | Receives customer orders from API Gateway and publishes events to SNS |
-| [Inventory Handler](./inventory-handler/lambda_function.py) | Updates inventory stock and performs idempotency checks |
-| [Payment Handler](./payment-handler/lambda_function.py) | Simulates payment processing workflow |
-| [Notification Handler](./notification-handler/lambda_function.py) | Sends order confirmation notifications |
+| [📄 Order Handler](./order-handler.py) | Receives customer orders from API Gateway and publishes events to SNS |
+| [📄 Inventory Handler](./inventory-handler.py) | Updates inventory stock and performs idempotency checks |
+| [📄 Payment Handler](./payment-handler.py) | Simulates payment processing workflow |
+| [📄 Notification Handler](./notification-handler.py) | Sends order confirmation notifications |
 
 ---
 
@@ -70,9 +64,9 @@ DynamoDB
 
 # 1️⃣ Order Handler
 
-📄 Code:
+📄 Source Code:
 
-[View Order Handler](./order-handler/lambda_function.py)
+👉 **[View Order Handler](./order-handler.py)**
 
 ---
 
@@ -82,51 +76,29 @@ The Order Handler Lambda acts as the entry point of the backend system.
 
 It receives customer orders from API Gateway and initiates the event-driven workflow.
 
----
-
-## Trigger
+### Trigger
 
 ```text
 API Gateway
 ```
 
----
+### Responsibilities
 
-## Responsibilities
-
-- Receive customer order
-- Validate incoming request
-- Generate order record
+- Receive customer orders
+- Validate request payload
 - Store order in DynamoDB
-- Publish event to SNS Topic
-- Return success response
+- Publish order event to SNS
+- Return API response to frontend
 
----
+### AWS Services Used
 
-## Services Used
+- Amazon API Gateway
+- AWS Lambda
+- Amazon SNS
+- Amazon DynamoDB
+- Amazon CloudWatch
 
-- API Gateway
-- DynamoDB
-- SNS
-- CloudWatch
-
----
-
-## Sample Order
-
-```json
-{
-  "orderId": "ORD001",
-  "customer": "Adhithyan",
-  "email": "adhi@gmail.com",
-  "product": "Laptop",
-  "quantity": 1
-}
-```
-
----
-
-## Output
+### Output
 
 ```json
 {
@@ -138,9 +110,9 @@ API Gateway
 
 # 2️⃣ Inventory Handler
 
-📄 Code:
+📄 Source Code:
 
-[View Inventory Handler](./inventory-handler/lambda_function.py)
+👉 **[View Inventory Handler](./inventory-handler.py)**
 
 ---
 
@@ -148,41 +120,34 @@ API Gateway
 
 The Inventory Handler manages stock updates after an order is received.
 
-This function ensures inventory consistency and prevents duplicate stock deductions.
+It ensures inventory consistency and prevents duplicate stock deductions.
 
----
-
-## Trigger
+### Trigger
 
 ```text
 Inventory Queue (SQS)
 ```
 
----
+### Responsibilities
 
-## Responsibilities
-
-- Consume messages from Inventory Queue
+- Consume inventory messages
 - Read order details
 - Verify stock availability
-- Reduce stock quantity
+- Deduct inventory quantity
 - Update Inventory table
 - Mark order as processed
 - Perform idempotency validation
 
----
+### AWS Services Used
 
-## Services Used
+- Amazon SQS
+- AWS Lambda
+- Amazon DynamoDB
+- Amazon CloudWatch
 
-- SQS
-- DynamoDB
-- CloudWatch
+### Key Feature
 
----
-
-## Idempotency Protection
-
-The function checks whether an order has already been processed.
+#### Idempotency Protection
 
 Example:
 
@@ -190,13 +155,9 @@ Example:
 ORD009 already processed
 ```
 
-Stock will not be deducted again.
+This prevents stock from being deducted multiple times if the same message is delivered again.
 
-This prevents duplicate inventory updates caused by retries.
-
----
-
-## DynamoDB Update
+### Inventory Update Example
 
 Before:
 
@@ -214,9 +175,9 @@ Laptop : 45
 
 # 3️⃣ Payment Handler
 
-📄 Code:
+📄 Source Code:
 
-[View Payment Handler](./payment-handler/lambda_function.py)
+👉 **[View Payment Handler](./payment-handler.py)**
 
 ---
 
@@ -224,42 +185,30 @@ Laptop : 45
 
 The Payment Handler simulates a payment processing service.
 
-In production, this function could integrate with:
+In a production environment, this Lambda could integrate with external payment providers.
 
-- Stripe
-- Razorpay
-- PayPal
-- Amazon Pay
-
----
-
-## Trigger
+### Trigger
 
 ```text
 Payment Queue (SQS)
 ```
 
----
-
-## Responsibilities
+### Responsibilities
 
 - Consume payment events
 - Validate order information
-- Process payment request
+- Process payment workflow
 - Update payment status
-- Store result in DynamoDB
+- Store payment result
 
----
+### AWS Services Used
 
-## Services Used
+- Amazon SQS
+- AWS Lambda
+- Amazon DynamoDB
+- Amazon CloudWatch
 
-- SQS
-- DynamoDB
-- CloudWatch
-
----
-
-## Example Status
+### Example Status
 
 ```json
 {
@@ -267,49 +216,49 @@ Payment Queue (SQS)
 }
 ```
 
+### Future Enhancements
+
+- Stripe Integration
+- Razorpay Integration
+- PayPal Integration
+- Amazon Pay Integration
+
 ---
 
 # 4️⃣ Notification Handler
 
-📄 Code:
+📄 Source Code:
 
-[View Notification Handler](./notification-handler/lambda_function.py)
+👉 **[View Notification Handler](./notification-handler.py)**
 
 ---
 
 ## Purpose
 
-The Notification Handler sends customer notifications after order processing.
+The Notification Handler is responsible for customer communication after order processing.
 
-For this project, notifications are simulated using CloudWatch Logs.
+For this project, notifications are simulated using CloudWatch logs.
 
----
-
-## Trigger
+### Trigger
 
 ```text
 Notification Queue (SQS)
 ```
 
----
-
-## Responsibilities
+### Responsibilities
 
 - Consume notification events
-- Generate confirmation message
-- Log notification details
+- Generate order confirmation messages
 - Simulate email delivery
+- Log notification activity
 
----
+### AWS Services Used
 
-## Services Used
+- Amazon SQS
+- AWS Lambda
+- Amazon CloudWatch
 
-- SQS
-- CloudWatch
-
----
-
-## Example Notification
+### Example Notification
 
 ```text
 Email Sent
@@ -325,7 +274,7 @@ Quantity : 1
 
 ## SNS Fan-Out Architecture
 
-One order event is automatically distributed to multiple services.
+A single order event is automatically distributed to multiple independent services.
 
 ```text
 SNS Topic
@@ -335,24 +284,31 @@ SNS Topic
 └── Notification Service
 ```
 
+### Benefits
+
+- Decoupled Architecture
+- Independent Processing
+- High Scalability
+- Improved Reliability
+
 ---
 
 ## Dead Letter Queue (DLQ)
 
-Inventory Queue is configured with a DLQ.
+The Inventory Queue is configured with a Dead Letter Queue.
 
-Benefits:
+### Benefits
 
-- Failed messages are isolated
-- No data loss
-- Easy troubleshooting
-- Improved reliability
+- Captures failed messages
+- Prevents data loss
+- Enables troubleshooting
+- Supports message replay
 
 ---
 
 ## CloudWatch Logging
 
-All Lambda functions send logs to CloudWatch.
+Every Lambda function sends logs to CloudWatch.
 
 Examples:
 
@@ -363,50 +319,50 @@ Examples:
 
 ---
 
-# 🚀 Benefits of Serverless Architecture
+# 🚀 Serverless Benefits
 
 ✅ Event Driven
 
 ✅ Auto Scaling
 
+✅ Highly Available
+
 ✅ Fault Tolerant
 
-✅ Fully Managed
-
-✅ Pay As You Go
+✅ Cost Optimized
 
 ✅ Decoupled Microservices
 
-✅ High Availability
+✅ Fully Managed Infrastructure
 
 ---
 
 # 🎯 Interview Questions
 
-### Why use SNS instead of directly invoking Lambdas?
+### Why use SNS instead of directly invoking Lambda functions?
 
-SNS provides asynchronous communication and fan-out architecture, enabling multiple services to process the same event independently.
+SNS enables asynchronous communication and fan-out architecture, allowing multiple services to process the same event independently.
 
 ---
 
-### Why use SQS between SNS and Lambda?
+### Why place SQS between SNS and Lambda?
 
-SQS improves reliability, buffering, fault tolerance, and message durability.
+SQS provides buffering, durability, retry mechanisms, and fault tolerance.
 
 ---
 
 ### Why implement idempotency?
 
-To prevent duplicate inventory deductions during retries or repeated message delivery.
+To prevent duplicate inventory deductions caused by retries or repeated message deliveries.
 
 ---
 
-### Why use a DLQ?
+### Why use a Dead Letter Queue?
 
-To capture failed messages and prevent message loss during processing failures.
+To isolate failed messages and ensure they are not lost during processing failures.
 
 ---
 
-### What architecture pattern is used?
+### What architecture pattern is implemented?
 
 **Event-Driven Serverless Microservices Architecture**
