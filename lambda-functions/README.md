@@ -30,10 +30,10 @@ lambda-functions/
 
 | Function | Purpose |
 |-----------|-----------|
-| [Order Handler](./order-handler/lambda_function.py) | Receives customer orders from API Gateway and publishes events to SNS |
-| [Inventory Handler](./inventory-handler/lambda_function.py) | Updates inventory stock and performs idempotency checks |
-| [Payment Handler](./payment-handler/lambda_function.py) | Simulates payment processing workflow |
-| [Notification Handler](./notification-handler/lambda_function.py) | Sends order confirmation notifications |
+| [Order Handler](./order-handler.py) | Receives customer orders from API Gateway and publishes events to SNS |
+| [Inventory Handler](./inventory-handler.py) | Updates inventory stock and performs idempotency checks |
+| [Payment Handler](./payment-handler.py) | Simulates payment processing workflow |
+| [Notification Handler](./notification-handler.py) | Sends order confirmation notifications |
 
 ---
 
