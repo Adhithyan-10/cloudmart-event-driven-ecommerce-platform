@@ -42,4 +42,4 @@ The documentation includes:
 - Analytics & Data Lake Extensions
 
 📘 Full document:  
-[Open Documentation PDF](./documentation/cloudMart_docc.pdf)
+[Open Documentation PDF](./cloudMart_docc.pdf)
