@@ -417,7 +417,7 @@ The future architecture roadmap shows how the platform can evolve into a product
 ---
 
 # Implementation Walkthrough:
-[Click Here](./implementation-walthrough)
+[Click Here](./implementation-walkthrough)
 
 ---
 
