@@ -416,55 +416,11 @@ The future architecture roadmap shows how the platform can evolve into a product
 
 ---
 
-# 📸 Project Screenshots
-
-## Successful Order Placement
-
-![Order Success](./screenshots/09-cloudmart-order-success.png)
+# Implementation Walkthrough:
+[Click Here](./implementation-walthrough)
 
 ---
 
-## API Gateway Route
-
-![API Gateway](./screenshots/17-api-gateway-route.png)
-
----
-
-## SNS Topic
-
-![SNS Topic](./screenshots/12-sns-topic-overview.png)
-
----
-
-## SQS Queues
-
-![SQS Queues](./screenshots/14-sqs-queues-overview.png)
-
----
-
-## Lambda Functions
-
-![Lambda Functions](./screenshots/16-lambda-functions-overview.png)
-
----
-
-## Orders DynamoDB Table
-
-![Orders Table](./screenshots/10-orders-dynamodb-table.png)
-
----
-
-## Inventory DynamoDB Table
-
-![Inventory Table](./screenshots/11-inventory-dynamodb-table.png)
-
----
-
-## Dead Letter Queue Configuration
-
-![DLQ](./screenshots/15-inventory-queue-dlq-config.png)
-
----
 
 # 📂 Repository Structure
 
