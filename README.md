@@ -78,7 +78,7 @@ This architecture enables independent scaling of services while maintaining loos
 
 # 🏗️ Current Architecture
 
-![Current Architecture](./beforefuture.png)
+![Current Architecture](./architecture/beforefuture.png)
 
 ---
 
