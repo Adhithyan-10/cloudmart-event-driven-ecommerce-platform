@@ -42,4 +42,4 @@ The documentation includes:
 - Analytics & Data Lake Extensions
 
 📘 Full document:  
-[Open Documentation PDF](./documentation/CloudMart_Event_Driven_Ecommerce_Platform_Documentation.pdf)
+[Open Documentation PDF](./documentation/cloudMart_docc.pdf)
