@@ -260,7 +260,7 @@ Benefits:
 
 # 🚀 Future Production Architecture
 
-![Future Architecture](./architecture/future-architecture.png)
+![Future Architecture](./architecture/futureenc.png)
 
 ---
 
