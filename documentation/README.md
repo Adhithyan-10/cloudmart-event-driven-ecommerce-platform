@@ -17,7 +17,7 @@ A complete 17-page project documentation is available, covering:
 
 📄 **View Full Documentation**
 
-👉 [CloudMart Event-Driven E-Commerce Platform Documentation](./documentation/cloudMart_docc.pdf)
+👉 [CloudMart Event-Driven E-Commerce Platform Documentation](./cloudMart_docc.pdf)
 
 ---
 
